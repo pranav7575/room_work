@@ -5,9 +5,9 @@ import Image from "next/image";
 
 const CircularTaskRotation = () => {
   const [containerSize, setContainerSize] = useState(600);
-  const names = ["Om", "Pranav", "Heramb", "Kunal", "Vedant"];
-  const tasks = ["Bathroom","Trash", "Basin ","No Task", "WC"];
-  const img = ["/om.png", "/pranav123.jpg", "/heramb1.jpg", "/kunal1.jpg", "/vedant.jpg"];
+  const names = ["Om", "Pranav", "Kunal", "Vedant"];
+  const tasks = ["Bathroom","Trash", "Basin ", "WC"];
+  const img = ["/om.png", "/pranav123.jpg", "/kunal1.jpg", "/vedant.jpg"];
 
   useEffect(() => {
     const updateSize = () => {
