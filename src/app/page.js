@@ -6,7 +6,7 @@ import Image from "next/image";
 const CircularTaskRotation = () => {
   const [containerSize, setContainerSize] = useState(600);
   const names = ["Om", "Pranav", "Heramb", "Kunal", "Vedant"];
-  const tasks = ["No Task", "WC", "Bathroom", "Trash", "Basin"];
+  const tasks = ["Bathroom","Trash", "Basin ","No Task", "WC"];
   const img = ["/om.png", "/pranav123.jpg", "/heramb1.jpg", "/kunal1.jpg", "/vedant.jpg"];
 
   useEffect(() => {
@@ -31,14 +31,20 @@ const CircularTaskRotation = () => {
 
   function getWeekNumber() {
     const now = new Date();
+  
     const startOfYear = new Date(now.getFullYear(), 0, 1);
+    console.log(now);
     const pastDaysOfYear = (now - startOfYear) / 86400000;
     return Math.ceil((pastDaysOfYear + startOfYear.getDay() + 1) / 7);
   }
 
   const currentWeek = getWeekNumber();
-  const rotatedTasks = tasks.map((_, i) => tasks[(i + currentWeek) % tasks.length]);
-
+  const rotatedTasks = tasks.map((_, i) => {
+    // Reverse logic: subtract the index, add currentWeek for weekly rotation
+    const reverseIndex = (tasks.length - i + currentWeek) % tasks.length;
+    return tasks[reverseIndex];
+  });
+  
   const getPosition = (index, total, radius) => {
     const angle = (index * 2 * Math.PI) / total - Math.PI / 2;
     return {
