@@ -5,9 +5,9 @@ import Image from "next/image";
 
 const CircularTaskRotation = () => {
   const [containerSize, setContainerSize] = useState(600);
-  const names = ["Om", "Pranav", "Kunal", "Vedant"];
-  const tasks = ["Bathroom","Trash", "Basin ", "WC"];
-  const img = ["/om.png", "/pranav123.jpg", "/kunal1.jpg", "/vedant.jpg"];
+  const names = ["Om", "Pranav", "Kunal", "Vedant","Heramb"];
+  const tasks = ["Bathroom","Trash", "Basin" , "WC","No Work"];
+  const img = ["/om.png", "/pranav123.jpg", "/kunal1.jpg", "/vedant.jpg","/heramb1.jpg"];
 
   useEffect(() => {
     const updateSize = () => {
@@ -81,7 +81,8 @@ const CircularTaskRotation = () => {
 
         {/* Task-name pairs in circular arrangement */}
         {names.map((name, index) => {
-          const position = getPosition(index, names.length, radius);
+          if (name === "Heramb") return null;
+          const position = getPosition(index, 4, radius);
 
           return (
             <div
@@ -122,7 +123,7 @@ const CircularTaskRotation = () => {
         {/* Connecting lines */}
         <svg className="absolute top-0 left-0 w-full h-full -z-10">
           {names.map((_, index) => {
-            const position = getPosition(index, names.length, radius);
+            const position = getPosition(index, 4 , radius);
             return (
               <line
                 key={`line-${index}`}
